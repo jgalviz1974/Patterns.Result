@@ -21,7 +21,7 @@ public class ExceptionErrorsTests
     [Fact]
     public void AppendException_IncludesInnerExceptionsAndData()
     {
-        Exception inner = new("inner msg");
+        Exception inner = new("inner msg.");
         Exception outer = new("outer msg", inner);
         outer.Data["token"] = "secret-value"; // should be hidden
         Error err = ExceptionErrors.ExceptionNotControlled(outer);
