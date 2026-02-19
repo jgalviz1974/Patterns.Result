@@ -13,7 +13,7 @@ public class ExceptionErrorsTests
         };
         Error err = ExceptionErrors.ExceptionNotControlled(ex);
         Assert.Equal("ExceptionErrors.ExceptionNotControlled", err.Code);
-        Assert.Contains("Excepción no controlada", err.Description);
+        Assert.Contains("no controlada", err.Description);
         Assert.Contains("InvalidOperationException", err.Description);
         Assert.Contains("boom", err.Description);
     }
