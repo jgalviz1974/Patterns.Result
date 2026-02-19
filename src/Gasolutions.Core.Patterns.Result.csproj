@@ -12,6 +12,8 @@
     <Copyright>Gasolutions®</Copyright>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	<RepositoryUrl>https://github.com/jgalviz1974/Patterns.Result</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.8.1</AssemblyVersion>
