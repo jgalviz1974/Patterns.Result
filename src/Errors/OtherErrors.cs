@@ -14,7 +14,7 @@
         public static Error NotDefined(string message, [CallerMemberName] string methodName = "")
         {
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error(stack.ErrorCode, $"[{stack.CallerClassName}] [{methodName}]: {message}");
+            return new Error(stack.ErrorCode, $"{message}", stack.CallerClassName, methodName);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@
         {
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             string serviceList = string.Join(", ", services);
-            return new Error(stack.ErrorCode, $"[{stack.CallerClassName}] [{methodName}]: Communication error with services: {serviceList}");
+            return new Error(stack.ErrorCode, $"Communication error with services: {serviceList}", stack.CallerClassName, methodName);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             string expectedList = string.Join(", ", expected);
             string receivedList = string.Join(", ", received);
-            return new Error(stack.ErrorCode, $"[{stack.CallerClassName}] [{methodName}]: Expected messages: {expectedList}; Received messages: {receivedList}");
+            return new Error(stack.ErrorCode, $"Expected messages: {expectedList}; Received messages: {receivedList}", stack.CallerClassName, methodName);
         }
     }
 }

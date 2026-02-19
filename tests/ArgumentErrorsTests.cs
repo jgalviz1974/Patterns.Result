@@ -22,7 +22,7 @@ public class ArgumentErrorsTests
     public void NoValid_IncludesCallerClassName()
     {
         Error e = ArgumentErrors.NoValid("string", "email", "formato inválido");
-        Assert.Contains("ArgumentErrorsTests", e.Description);
-        Assert.Contains("NoValid_IncludesCallerClassName", e.Description);
+        Assert.Contains("ArgumentErrorsTests", e.ClassName);
+        Assert.Contains("NoValid_IncludesCallerClassName", e.MethodName);
     }
 }

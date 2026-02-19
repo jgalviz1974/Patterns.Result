@@ -7,8 +7,8 @@ public class DatabaseErrorsTests
     {
         Error e = DatabaseErrors.TableWithoutRegisters("MyTable");
         Assert.Equal("DatabaseErrors.TableWithoutRegisters", e.Code);
-        Assert.Contains("DatabaseErrorsTest", e.Description);
-        Assert.Contains("TableWithoutRegisters_ReturnsExpectedCodeAndMessage", e.Description);
+        Assert.Contains("DatabaseErrorsTest", e.ClassName);
+        Assert.Contains("TableWithoutRegisters_ReturnsExpectedCodeAndMessage", e.MethodName);
         Assert.Contains("MyTable", e.Description);
     }
 
@@ -20,8 +20,8 @@ public class DatabaseErrorsTests
 
         Error female = DatabaseErrors.NotFound("Entity", 5, false);
         Assert.Contains("Entity 5 no fue encontrada", female.Description);
-        Assert.Contains("DatabaseErrorsTest", male.Description);
-        Assert.Contains("NotFound_ById_MaleAndFemale", male.Description);
+        Assert.Contains("DatabaseErrorsTest", male.ClassName);
+        Assert.Contains("NotFound_ById_MaleAndFemale", male.MethodName);
     }
 
     [Fact]
@@ -30,8 +30,8 @@ public class DatabaseErrorsTests
         Error e = DatabaseErrors.NotFound("Entity", "DNI", "X123");
         Assert.Contains("DNI", e.Description);
         Assert.Contains("X123", e.Description);
-        Assert.Contains("DatabaseErrorsTest", e.Description);
-        Assert.Contains("NotFound_ByField_ReturnsMessage", e.Description);
+        Assert.Contains("DatabaseErrorsTest", e.ClassName);
+        Assert.Contains("NotFound_ByField_ReturnsMessage", e.MethodName);
     }
 
     [Fact]
@@ -39,8 +39,8 @@ public class DatabaseErrorsTests
     {
         Error male = DatabaseErrors.NotFound("Usuario", "Email", "user@example.com", true);
         Assert.Equal("DatabaseErrors.NotFound", male.Code);
-        Assert.Contains("DatabaseErrorsTest", male.Description);
-        Assert.Contains("NotFound_ByField_MaleAndFemale", male.Description);
+        Assert.Contains("DatabaseErrorsTest", male.ClassName);
+        Assert.Contains("NotFound_ByField_MaleAndFemale", male.MethodName);
         Assert.Contains("Usuario con [Email]: user@example.com", male.Description);
         Assert.Contains("no fue encontrado", male.Description);
 
@@ -54,8 +54,8 @@ public class DatabaseErrorsTests
     {
         Error e = DatabaseErrors.TableWithoutRegisters("Usuarios");
         Assert.Equal("DatabaseErrors.TableWithoutRegisters", e.Code);
-        Assert.Contains("DatabaseErrorsTest", e.Description);
-        Assert.Contains("TableWithoutRegisters_WithMessage_ReturnsExpectedCodeAndMessage", e.Description);
+        Assert.Contains("DatabaseErrorsTest", e.ClassName);
+        Assert.Contains("TableWithoutRegisters_WithMessage_ReturnsExpectedCodeAndMessage", e.MethodName);
         Assert.Contains("Usuarios", e.Description);
     }
 
@@ -64,8 +64,8 @@ public class DatabaseErrorsTests
     {
         Error male = DatabaseErrors.NotUpdated("Usuario", 1, "Registro no existe", true);
         Assert.Equal("DatabaseErrors.NotUpdated", male.Code);
-        Assert.Contains("DatabaseErrorsTest", male.Description);
-        Assert.Contains("NotUpdated_MaleAndFemale", male.Description);
+        Assert.Contains("DatabaseErrorsTest", male.ClassName);
+        Assert.Contains("NotUpdated_MaleAndFemale", male.MethodName);
         Assert.Contains("Usuario 1 no fue actualizado", male.Description);
         Assert.Contains("Registro no existe", male.Description);
 
@@ -79,8 +79,8 @@ public class DatabaseErrorsTests
     {
         Error e = DatabaseErrors.AssociatedRegisters("Vehículo", 5);
         Assert.Equal("DatabaseErrors.AssociatedRegisters", e.Code);
-        Assert.Contains("DatabaseErrorsTest", e.Description);
-        Assert.Contains("AssociatedRegisters_ReturnsExpectedCodeAndMessage", e.Description);
+        Assert.Contains("DatabaseErrorsTest", e.ClassName);
+        Assert.Contains("AssociatedRegisters_ReturnsExpectedCodeAndMessage", e.MethodName);
         Assert.Contains("Vehículo", e.Description);
         Assert.Contains("5", e.Description);
         Assert.Contains("ventas asociadas", e.Description);
@@ -93,8 +93,8 @@ public class DatabaseErrorsTests
         Error e = DatabaseErrors.ForeingRelationViolated("Orders", errorMessage);
 
         Assert.Equal("DatabaseErrors.ForeingRelationViolated", e.Code);
-        Assert.Contains("DatabaseErrorsTest", e.Description);
-        Assert.Contains("ForeingRelationViolated_WithValidMatch_ReturnsExtractedValues", e.Description);
+        Assert.Contains("DatabaseErrorsTest", e.ClassName);
+        Assert.Contains("ForeingRelationViolated_WithValidMatch_ReturnsExtractedValues", e.MethodName);
         Assert.Contains("Orders", e.Description);
         Assert.Contains("vehicles", e.Description);
         Assert.Contains("Id", e.Description);
@@ -107,8 +107,8 @@ public class DatabaseErrorsTests
         Error e = DatabaseErrors.ForeingRelationViolated("Orders", errorMessage);
 
         Assert.Equal("DatabaseErrors.ForeingRelationViolated", e.Code);
-        Assert.Contains("DatabaseErrorsTest", e.Description);
-        Assert.Contains("ForeingRelationViolated_WithoutMatch_ReturnsMessageWithEmptyValues", e.Description);
+        Assert.Contains("DatabaseErrorsTest", e.ClassName);
+        Assert.Contains("ForeingRelationViolated_WithoutMatch_ReturnsMessageWithEmptyValues", e.MethodName);
         Assert.Contains("Orders", e.Description);
     }
 }

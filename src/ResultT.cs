@@ -15,6 +15,10 @@
             this.Error = error;
         }
 
+        public string ClassName { get; private set; }
+
+        public string MethodName { get; private set; }
+
         public T Value { get; }
 
         public bool IsSuccess { get; }

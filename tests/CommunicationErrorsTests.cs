@@ -33,8 +33,8 @@ public class CommunicationErrorsTests
     public void CommunicationError_IncludesCallerContext()
     {
         Error e = CommunicationErrors.CommunicationError("EmailService", "SMTP error");
-        Assert.Contains("CommunicationErrorsTests", e.Description);
-        Assert.Contains("CommunicationError_IncludesCallerContext", e.Description);
+        Assert.Contains("CommunicationErrorsTests", e.ClassName);
+        Assert.Contains("CommunicationError_IncludesCallerContext", e.MethodName);
     }
 
     /// <summary>

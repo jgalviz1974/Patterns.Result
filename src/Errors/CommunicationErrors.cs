@@ -15,7 +15,7 @@
         public static Error CommunicationError(string nameService, string message, [CallerMemberName] string method = "")
         {
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: Error al tratar de conectar a {nameService}: {message}");
+            return new(stack.ErrorCode, $"Error al tratar de conectar a {nameService}: {message}", stack.CallerClassName, method);
         }
     }
 }

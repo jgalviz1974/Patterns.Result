@@ -16,7 +16,7 @@
         public static Error NoValid(string type, string nameObject, string messsage, [CallerMemberName] string method = "")
         {
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameObject} de tipo {type} {messsage}.");
+            return new(stack.ErrorCode, $"{nameObject} de tipo {type} {messsage}.", stack.CallerClassName, method);
         }
     }
 }

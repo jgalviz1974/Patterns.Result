@@ -21,7 +21,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             string key = $"{stack.ErrorCode}.{serviceName}.{wcfMethod}.ExceptionNotControlledInvokingServiceMethod";
             string message = BuildDetailedExceptionMessage(stack.ErrorCode, value);
-            return new Error(key, message);
+            return new Error(key, message, stack.CallerClassName, method);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             string key = $"{stack.ErrorCode}";
             string message = BuildDetailedExceptionMessage(stack.ErrorCode, value);
-            return new Error(key, message);
+            return new Error(key, message, stack.CallerClassName, method);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         {
             StringBuilder sb = new(1024);
 
-            _ = sb.AppendLine($"🛑 Excepción no controlada en {errorCode}.()");
+            _ = sb.AppendLine($"🛑 Excepción no controlada: {errorCode}.()");
             _ = sb.AppendLine();
 
             AppendException(sb, ex, level: 0);
@@ -69,8 +69,8 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             string header = level == 0 ? "Exception" : $"InnerException (nivel {level})";
 
             _ = sb.AppendLine($"{indent}=== {header} ===");
-            _ = sb.AppendLine($"{indent}Tipo      : {ex.GetType().FullName}");
-            _ = sb.AppendLine($"{indent}Mensaje   : {ex.Message}");
+            _ = sb.AppendLine($"{indent}Type      : {ex.GetType().FullName}");
+            _ = sb.AppendLine($"{indent}Message   : {ex.Message}");
 
             // Propiedades útiles del contexto
             if (ex.HResult != 0)
@@ -169,7 +169,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             }
             catch (Exception dataEx)
             {
-                _ = sb.AppendLine($"{indent}Data      : (error al leer Data: {dataEx.GetType().Name} - {dataEx.Message})");
+                _ = sb.AppendLine($"{indent}Data      : (error reading Data: {dataEx.GetType().Name} - {dataEx.Message})");
             }
         }
 
@@ -186,7 +186,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             }
             catch
             {
-                return $"({obj.GetType().FullName} .ToString() falló)";
+                return $"({obj.GetType().FullName} .ToString() error.)";
             }
         }
 

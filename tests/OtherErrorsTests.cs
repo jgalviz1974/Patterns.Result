@@ -20,7 +20,7 @@ public class OtherErrorsTests
     public void NotDefined_IncludesCallerContext()
     {
         Error e = OtherErrors.NotDefined("Test message");
-        Assert.Contains("OtherErrorsTests", e.Description);
-        Assert.Contains("NotDefined_IncludesCallerContext", e.Description);
+        Assert.Contains("OtherErrorsTests", e.ClassName);
+        Assert.Contains("NotDefined_IncludesCallerContext", e.MethodName);
     }
 }

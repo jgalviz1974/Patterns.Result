@@ -15,7 +15,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         public static Error TableWithoutRegisters(string nameEntity, [CallerMemberName] string method = "")
         {
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: La tabla {nameEntity} no contiene registros.");
+            return new(stack.ErrorCode, $"La tabla {nameEntity} no contiene registros.", stack.CallerClassName, method);
         }
 
         /// <summary>
@@ -31,11 +31,11 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             if (isMale)
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity} {id} no fue encontrado.");
+                return new(stack.ErrorCode, $"{nameEntity} {id} no fue encontrado.", stack.CallerClassName, method);
             }
             else
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity} {id} no fue encontrada.");
+                return new(stack.ErrorCode, $"{nameEntity} {id} no fue encontrada.", stack.CallerClassName, method);
             }
         }
 
@@ -52,11 +52,11 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             if (isMale)
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity}-{nameField} no fue encontrado.");
+                return new(stack.ErrorCode, $"{nameEntity}-{nameField} no fue encontrado.", stack.CallerClassName, method);
             }
             else
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity}-{nameField} no fue encontrada.");
+                return new(stack.ErrorCode, $"{nameEntity}-{nameField} no fue encontrada.", stack.CallerClassName, method);
             }
         }
 
@@ -75,11 +75,11 @@ namespace Gasolutions.Core.Patterns.Result.Errors
 
             if (isMale)
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity} con [{nameField}]: {value}, no fue encontrado.");
+                return new(stack.ErrorCode, $"{nameEntity} con [{nameField}]: {value}, no fue encontrado.", stack.CallerClassName, method);
             }
             else
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity} con [{nameField}]: {value}, no fue encontrada.");
+                return new(stack.ErrorCode, $"{nameEntity} con [{nameField}]: {value}, no fue encontrada.", stack.CallerClassName, method);
             }
         }
 
@@ -94,7 +94,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         {
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
 
-            return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: No existen registros {message} en {nameEntity}.");
+            return new(stack.ErrorCode, $"No existen registros {message} en {nameEntity}.", stack.CallerClassName, method);
         }
 
         /// <summary>
@@ -111,11 +111,11 @@ namespace Gasolutions.Core.Patterns.Result.Errors
             StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             if (isMale)
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity} {id} no fue actualizado debido a: {message}");
+                return new(stack.ErrorCode, $"{nameEntity} {id} no fue actualizado debido a: {message}", stack.CallerClassName, method);
             }
             else
             {
-                return new(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: {nameEntity} {id} no fue actualizadada debido a: {message}");
+                return new(stack.ErrorCode, $"{nameEntity} {id} no fue actualizadada debido a: {message}", stack.CallerClassName, method);
             }
         }
 
@@ -129,7 +129,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         public static Error AssociatedRegisters(string entity, int stationId, [CallerMemberName] string method = "")
         {
             StackTraceInfo stackInfo = StackTraceHelper.RetrieveCallerInfo();
-            return new Error(stackInfo.ErrorCode, $"Metódo {method} de la clase {stackInfo.CallerClassName}: No se pueden eliminar los registros de la {entity} para la estación {stationId} porque existen ventas asociadas.");
+            return new Error(stackInfo.ErrorCode, $"No se pueden eliminar los registros de la {entity} para la estación {stationId} porque existen ventas asociadas.", stackInfo.CallerClassName, method);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
                 refField = match.Groups["RefField"].Value; // Id
             }
 
-            return new Error(stack.ErrorCode, $"Metódo {method} de la clase {stack.CallerClassName}: Se ha violado una restricción de clave foránea. Tabla: {entity}, Tabla referenciada: {table}, Campo referenciado: {refField}");
+            return new Error(stack.ErrorCode, $"Se ha violado una restricción de clave foránea. Tabla: {entity}, Tabla referenciada: {table}, Campo referenciado: {refField}", stack.CallerClassName, method);
         }
     }
 }
