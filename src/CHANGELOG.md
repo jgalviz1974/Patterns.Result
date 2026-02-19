@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.9.0]
+### Added
+- Add CassName and Method Name for better error context
+- New error code generation strategy using StackTraceHelper for more accurate error tracking
+
 ## [1.0.8.1]
 ### Added
 - Add NotFound method for string field in DatabaseErrors
