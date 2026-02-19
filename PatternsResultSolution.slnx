@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Gasolutions.Core.Patterns.Result.csproj" />
+  <Project Path="tests/Gasolutions.Core.Patterns.Result.Tests.csproj" />
+</Solution>
