@@ -1,0 +1,29 @@
+// <copyright file="HttpErrors.cs" company="Gasolutions SAS">
+// Copyright (c) Gasolutions SAS. Todos los derechos reservados.
+// </copyright>
+
+namespace Gasolutions.Core.Patterns.Result.Errors
+{
+    /// <summary>
+    /// Proporciona definiciones de errores para operaciones HTTP.
+    /// </summary>
+    public static class HttpErrors
+    {
+        /// <summary>
+        /// Retorna un error indicando que la URL especificada no está autorizada.
+        /// </summary>
+        /// <param name="url">La URL a la que no se tiene autorización.</param>
+        /// <returns>Una instancia de <see cref="Error"/> que representa el error de no autorizado.</returns>
+        public static Error UnAuthorized(string url, [CallerMemberName] string method = "")
+        {
+            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
+            return new Error("HttpErrors.UnAuthorized", $"No autorizado para acceder a la URL '{url}'.", stack.CallerClassName, method);
+        }
+
+        public static Error BadResponse(string type, string content, [CallerMemberName] string method = "")
+        {
+            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
+            return new Error("HttpErrors.BadResponse", $"La respuesta del servicio externo no es válida. Tipo Esperado: '{type}', Respuesta: '{content}'.", stack.CallerClassName, method);
+        }
+    }
+}

@@ -6,7 +6,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
     /// <summary>
     /// Utility class to retrieve caller information from the call stack.
     /// </summary>
-    internal static class StackTraceHelper
+    public static class StackTraceHelper
     {
         /// <summary>
         /// Generates an error code combining the error factory class name and method name.

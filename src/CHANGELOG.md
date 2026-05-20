@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.10.0]
+### Added
+- Add autentications errors 
+- Add Azure Storage errors
+- Add Enviroment errors
+- Add HTTP errors
+
+### Changed
+- StackTraceHelper is public now
+
+
 ## [1.0.9.0]
 ### Added
 - Add CassName and Method Name for better error context
