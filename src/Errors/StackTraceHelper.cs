@@ -13,7 +13,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// Both are obtained from the immediate caller (error factory method).
         /// </summary>
         /// <returns>Error code in format "ErrorFactoryClassName.MethodName".</returns>
-        internal static StackTraceInfo RetrieveCallerInfo()
+        public static StackTraceInfo RetrieveCallerInfo()
         {
             StackTrace stackTrace = new(true);
             MethodBase? callerMethodBase = stackTrace.GetFrame(2)?.GetMethod();

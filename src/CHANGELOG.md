@@ -2,9 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.10.1]
+### Added
+- Add KeyValue errors 
+- Add Email errors
+
 ## [1.0.10.0]
 ### Added
-- Add autentications errors 
+- Add Autentications errors 
 - Add Azure Storage errors
 - Add Enviroment errors
 - Add HTTP errors
