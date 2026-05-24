@@ -1,6 +1,6 @@
 using System;
 
-namespace Gasolutions.Core.ResultPattern.Tests;
+namespace Gasolutions.Core.Patterns.Result.Tests;
 
 public class ExceptionErrorsTests
 {
