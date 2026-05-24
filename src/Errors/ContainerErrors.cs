@@ -4,27 +4,27 @@
     {
         public static Error InvalidContainerName([CallerMemberName] string method = "")
         {
-            return Error.Create("El nombre del contenedor es requerido.", method);
+            return Error.Create(ErrorMessages.Get("ContainerErrors_InvalidContainerName"), method);
         }
 
         public static Error InvalidFileName([CallerMemberName] string method = "")
         {
-            return Error.Create("El nombre del archivo es requerido.", method);
+            return Error.Create(ErrorMessages.Get("ContainerErrors_InvalidFileName"), method);
         }
 
         public static Error InvalidFilePath([CallerMemberName] string method = "")
         {
-            return Error.Create("La ruta del archivo es requerida.", method);
+            return Error.Create(ErrorMessages.Get("ContainerErrors_InvalidFilePath"), method);
         }
 
         public static Error LocalFileNotFound(string filePath, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No se encontró el archivo local '{filePath}'.", method);
+            return Error.Create(ErrorMessages.Get("ContainerErrors_LocalFileNotFound", filePath), method);
         }
 
         public static Error InvalidContent([CallerMemberName] string method = "")
         {
-            return Error.Create("El contenido del archivo es requerido.", method);
+            return Error.Create(ErrorMessages.Get("ContainerErrors_InvalidContent"), method);
         }
     }
 }

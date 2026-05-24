@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+	<value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+	<value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+	<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+	<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- ArgumentErrors -->
+  <data name="ArgumentErrors_NoValid" xml:space="preserve">
+	<value>{0} de tipo {1} {2}.</value>
+  </data>
+
+  <!-- AuthErrors -->
+  <data name="AuthErrors_UserBlocked" xml:space="preserve">
+	<value>El usuario '{0}' se encuentra bloqueado.</value>
+  </data>
+  <data name="AuthErrors_InvalidCredentials" xml:space="preserve">
+	<value>Usuario no validado o contraseña incorrecta.</value>
+  </data>
+  <data name="AuthErrors_SamlGenericError" xml:space="preserve">
+	<value>No se pudo completar la autenticación. Por favor contacte al administrador.</value>
+  </data>
+  <data name="AuthErrors_SamlConfigurationUnavailable" xml:space="preserve">
+	<value>El sistema de autenticación empresarial no está disponible. Use login local o contacte soporte.</value>
+  </data>
+  <data name="AuthErrors_InsufficientPermissions" xml:space="preserve">
+	<value>Permisos insuficientes para realizar esta operación.</value>
+  </data>
+  <data name="AuthErrors_SamlConfigNotFound" xml:space="preserve">
+	<value>No se encontró configuración SAML para la compañía {0}.</value>
+  </data>
+
+  <!-- AzureStorageErrors -->
+  <data name="AzureStorageErrors_BlobNotFound" xml:space="preserve">
+	<value>El archivo '{0}' no fue encontrado en el contenedor '{1}'.</value>
+  </data>
+
+  <!-- CommunicationErrors -->
+  <data name="CommunicationErrors_CommunicationError" xml:space="preserve">
+	<value>Error al tratar de conectar a {0}: {1}</value>
+  </data>
+
+  <!-- ContainerErrors -->
+  <data name="ContainerErrors_InvalidContainerName" xml:space="preserve">
+	<value>El nombre del contenedor es requerido.</value>
+  </data>
+  <data name="ContainerErrors_InvalidFileName" xml:space="preserve">
+	<value>El nombre del archivo es requerido.</value>
+  </data>
+  <data name="ContainerErrors_InvalidFilePath" xml:space="preserve">
+	<value>La ruta del archivo es requerida.</value>
+  </data>
+  <data name="ContainerErrors_LocalFileNotFound" xml:space="preserve">
+	<value>No se encontró el archivo local '{0}'.</value>
+  </data>
+  <data name="ContainerErrors_InvalidContent" xml:space="preserve">
+	<value>El contenido del archivo es requerido.</value>
+  </data>
+
+  <!-- DatabaseErrors -->
+  <data name="DatabaseErrors_TableWithoutRegisters" xml:space="preserve">
+	<value>La tabla {0} no contiene registros.</value>
+  </data>
+  <data name="DatabaseErrors_TableWithoutRegistersMessage" xml:space="preserve">
+	<value>No existen registros {0} en {1}.</value>
+  </data>
+  <data name="DatabaseErrors_NotFoundMale" xml:space="preserve">
+	<value>{0} {1} no fue encontrado.</value>
+  </data>
+  <data name="DatabaseErrors_NotFoundFemale" xml:space="preserve">
+	<value>{0} {1} no fue encontrada.</value>
+  </data>
+  <data name="DatabaseErrors_NotFoundByFieldMale" xml:space="preserve">
+	<value>{0}-{1} no fue encontrado.</value>
+  </data>
+  <data name="DatabaseErrors_NotFoundByFieldFemale" xml:space="preserve">
+	<value>{0}-{1} no fue encontrada.</value>
+  </data>
+  <data name="DatabaseErrors_NotFoundByValueMale" xml:space="preserve">
+	<value>{0} con [{1}]: {2}, no fue encontrado.</value>
+  </data>
+  <data name="DatabaseErrors_NotFoundByValueFemale" xml:space="preserve">
+	<value>{0} con [{1}]: {2}, no fue encontrada.</value>
+  </data>
+  <data name="DatabaseErrors_NotUpdatedMale" xml:space="preserve">
+	<value>{0} {1} no fue actualizado debido a: {2}</value>
+  </data>
+  <data name="DatabaseErrors_NotUpdatedFemale" xml:space="preserve">
+	<value>{0} {1} no fue actualizadada debido a: {2}</value>
+  </data>
+  <data name="DatabaseErrors_AssociatedRegisters" xml:space="preserve">
+	<value>No se pueden eliminar los registros de la {0} para la estación {1} porque existen ventas asociadas.</value>
+  </data>
+  <data name="DatabaseErrors_ForeignRelationViolated" xml:space="preserve">
+	<value>Se ha violado una restricción de clave foránea. Tabla: {0}, Tabla referenciada: {1}, Campo referenciado: {2}</value>
+  </data>
+
+  <!-- EmailErrors -->
+  <data name="EmailErrors_InvalidResponse" xml:space="preserve">
+	<value>Respuesta inválida del proveedor de correo electrónico.</value>
+  </data>
+  <data name="EmailErrors_InvalidResponseWithMessage" xml:space="preserve">
+	<value>Respuesta inválida del proveedor de correo electrónico: {0}</value>
+  </data>
+
+  <!-- EnviromentVariableErrors -->
+  <data name="EnviromentVariableErrors_NoFound" xml:space="preserve">
+	<value>No se encontró la variable de entorno '{0}'</value>
+  </data>
+
+  <!-- HttpErrors -->
+  <data name="HttpErrors_UnAuthorized" xml:space="preserve">
+	<value>No autorizado para acceder a la URL '{0}'.</value>
+  </data>
+  <data name="HttpErrors_BadResponse" xml:space="preserve">
+	<value>La respuesta del servicio externo no es válida. Tipo Esperado: '{0}', Respuesta: '{1}'.</value>
+  </data>
+
+  <!-- KeyValueErrors -->
+  <data name="KeyValueErrors_NoValid" xml:space="preserve">
+	<value>La clave proporcionada no es válida: '{0}'</value>
+  </data>
+
+  <!-- OtherErrors -->
+  <data name="OtherErrors_CommunicationError" xml:space="preserve">
+	<value>Error de comunicación con los servicios: {0}</value>
+  </data>
+  <data name="OtherErrors_MessageMismatch" xml:space="preserve">
+	<value>Mensajes esperados: {0}; Mensajes recibidos: {1}</value>
+  </data>
+
+  <!-- TokenErrors -->
+  <data name="TokenErrors_GettingProblem" xml:space="preserve">
+	<value>No se pudo obtener el token en {0} api rest.</value>
+  </data>
+
+  <!-- TwoFactorErrors -->
+  <data name="TwoFactorErrors_EmailNotConfirmed" xml:space="preserve">
+	<value>El correo del usuario no se encuentra confirmado.</value>
+  </data>
+  <data name="TwoFactorErrors_UserNotFound" xml:space="preserve">
+	<value>No se encontró el usuario '{0}'.</value>
+  </data>
+  <data name="TwoFactorErrors_OtpInvalid" xml:space="preserve">
+	<value>El OTP proporcionado no es válido.</value>
+  </data>
+  <data name="TwoFactorErrors_OtpExpired" xml:space="preserve">
+	<value>El OTP ha expirado.</value>
+  </data>
+  <data name="TwoFactorErrors_InvalidCredentials" xml:space="preserve">
+	<value>Usuario no validado o contraseña incorrecta.</value>
+  </data>
+
+</root>

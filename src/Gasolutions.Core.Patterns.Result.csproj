@@ -36,12 +36,30 @@
 			<PackageReleaseNotes>@(ReleaseNotesLines->'%(Identity)', '%0A')</PackageReleaseNotes>
 		</PropertyGroup>
 	</Target>
+	<ItemGroup>
+	  <Compile Update="Resources\Messages.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Messages.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 	
   <ItemGroup>
     <None Update="readme.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LogicalName>Gasolutions.Core.Patterns.Result.Resources.Messages.resources</LogicalName>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Messages.en.resx">
+      <LogicalName>Gasolutions.Core.Patterns.Result.Resources.Messages.en.resources</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

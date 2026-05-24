@@ -8,7 +8,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
     {
         public static Gasolutions.Core.Patterns.Result.Errors.Error NoFound(string name, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No se encontró la variable de entorno '{name}'", method);
+            return Error.Create(ErrorMessages.Get("EnviromentVariableErrors_NoFound", name), method);
         }
     }
 }

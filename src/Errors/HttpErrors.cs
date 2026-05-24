@@ -16,12 +16,12 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>Una instancia de <see cref="Error"/> que representa el error de no autorizado.</returns>
         public static Error UnAuthorized(string url, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No autorizado para acceder a la URL '{url}'.", method);
+            return Error.Create(ErrorMessages.Get("HttpErrors_UnAuthorized", url), method);
         }
 
         public static Error BadResponse(string type, string content, [CallerMemberName] string method = "")
         {
-            return Error.Create($"La respuesta del servicio externo no es válida. Tipo Esperado: '{type}', Respuesta: '{content}'.", method);
+            return Error.Create(ErrorMessages.Get("HttpErrors_BadResponse", type, content), method);
         }
 
         public static Error InternalServerError(string content, [CallerMemberName] string method = "")

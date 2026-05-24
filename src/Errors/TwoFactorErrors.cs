@@ -15,7 +15,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error EmailNotConfirmed([CallerMemberName] string method = "")
         {
-            return Error.Create("El correo del usuario no se encuentra confirmado.", method);
+            return Error.Create(ErrorMessages.Get("TwoFactorErrors_EmailNotConfirmed"), method);
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error UserNotFound(string userId, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No se encontró el usuario '{userId}'.", method);
+            return Error.Create(ErrorMessages.Get("TwoFactorErrors_UserNotFound", userId), method);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error OtpInvalid([CallerMemberName] string method = "")
         {
-            return Error.Create("El OTP proporcionado no es válido.", method);
+            return Error.Create(ErrorMessages.Get("TwoFactorErrors_OtpInvalid"), method);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error OtpExpired([CallerMemberName] string method = "")
         {
-            return Error.Create("El OTP ha expirado.", method);
+            return Error.Create(ErrorMessages.Get("TwoFactorErrors_OtpExpired"), method);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidCredentials([CallerMemberName] string method = "")
         {
-            return Error.Create("Usuario no validado o contraseña incorrecta.", method);
+            return Error.Create(ErrorMessages.Get("TwoFactorErrors_InvalidCredentials"), method);
         }
     }
 }

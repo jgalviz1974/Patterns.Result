@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2.0.0.0]
+### Added
+- `ErrorLanguage` static class to configure the active culture for error messages (defaults to Spanish `es`)
+- `ErrorMessages` internal helper that resolves localized message templates via `ResourceManager`
+- `Messages.resx` embedded resource with 38 Spanish message templates (default language)
+- `Messages.en.resx` embedded resource with 38 English message templates
+- Bilingual support (Spanish / English) across all error factories: `ArgumentErrors`, `AuthErrors`, `AzureStorageErrors`, `CommunicationErrors`, `ContainerErrors`, `DatabaseErrors`, `EmailErrors`, `EnviromentVariableErrors`, `HttpErrors`, `KeyValueErrors`, `OtherErrors`, `TokenErrors`, `TwoFactorErrors`
+
+### Changed
+- All fixed error message strings in error factories replaced with `ErrorMessages.Get(key, args)` resource lookups
+- Caller-supplied messages (`OtherErrors.NotDefined`, `AuthErrors.RequiredField`, `EmailErrors.Others`, `HttpErrors.InternalServerError`, `HttpErrors.General`, `ExceptionErrors.*`) remain unchanged — they are not localized by the library
+- `Error.Create(...)` centralizes `StackTraceHelper.RetrieveCallerInfo()` — no longer called directly from factory classes
+- `StackTraceHelper.RetrieveCallerInfo(int frameOffset = 0)` now accepts a frame offset to compensate for wrapper calls
+
+
 ## [1.0.10.1]
 ### Added
 - Add KeyValue errors 

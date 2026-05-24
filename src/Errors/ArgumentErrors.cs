@@ -15,7 +15,7 @@
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NoValid(string type, string nameObject, string messsage, [CallerMemberName] string method = "")
         {
-            return Error.Create($"{nameObject} de tipo {type} {messsage}.", method);
+            return Error.Create(ErrorMessages.Get("ArgumentErrors_NoValid", nameObject, type, messsage), method);
         }
     }
 }

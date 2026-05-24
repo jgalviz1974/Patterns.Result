@@ -15,7 +15,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidResponse([CallerMemberName] string method = "")
         {
-            return Error.Create("Invalid response from email provider.", method);
+            return Error.Create(ErrorMessages.Get("EmailErrors_InvalidResponse"), method);
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidResponse(string message, [CallerMemberName] string method = "")
         {
-            return Error.Create($"Invalid response from email provider: {message}", method);
+            return Error.Create(ErrorMessages.Get("EmailErrors_InvalidResponseWithMessage", message), method);
         }
 
         /// <summary>

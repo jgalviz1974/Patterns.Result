@@ -14,7 +14,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error TableWithoutRegisters(string nameEntity, [CallerMemberName] string method = "")
         {
-            return Error.Create($"La tabla {nameEntity} no contiene registros.", method);
+            return Error.Create(ErrorMessages.Get("DatabaseErrors_TableWithoutRegisters", nameEntity), method);
         }
 
         /// <summary>
@@ -27,10 +27,8 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotFound(string nameEntity, int id, bool isMale = true, [CallerMemberName] string method = "")
         {
-            string description = isMale
-                ? $"{nameEntity} {id} no fue encontrado."
-                : $"{nameEntity} {id} no fue encontrada.";
-            return Error.Create(description, method);
+            string key = isMale ? "DatabaseErrors_NotFoundMale" : "DatabaseErrors_NotFoundFemale";
+            return Error.Create(ErrorMessages.Get(key, nameEntity, id), method);
         }
 
         /// <summary>
@@ -43,10 +41,8 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotFound(string nameEntity, string nameField, bool isMale = true, [CallerMemberName] string method = "")
         {
-            string description = isMale
-                ? $"{nameEntity}-{nameField} no fue encontrado."
-                : $"{nameEntity}-{nameField} no fue encontrada.";
-            return Error.Create(description, method);
+            string key = isMale ? "DatabaseErrors_NotFoundByFieldMale" : "DatabaseErrors_NotFoundByFieldFemale";
+            return Error.Create(ErrorMessages.Get(key, nameEntity, nameField), method);
         }
 
         /// <summary>
@@ -60,10 +56,8 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotFound(string nameEntity, string nameField, string value, bool isMale = true, [CallerMemberName] string method = "")
         {
-            string description = isMale
-                ? $"{nameEntity} con [{nameField}]: {value}, no fue encontrado."
-                : $"{nameEntity} con [{nameField}]: {value}, no fue encontrada.";
-            return Error.Create(description, method);
+            string key = isMale ? "DatabaseErrors_NotFoundByValueMale" : "DatabaseErrors_NotFoundByValueFemale";
+            return Error.Create(ErrorMessages.Get(key, nameEntity, nameField, value), method);
         }
 
         /// <summary>
@@ -75,7 +69,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error TableWithoutRegisters(string nameEntity, string message, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No existen registros {message} en {nameEntity}.", method);
+            return Error.Create(ErrorMessages.Get("DatabaseErrors_TableWithoutRegistersMessage", message, nameEntity), method);
         }
 
         /// <summary>
@@ -89,10 +83,8 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotUpdated(string nameEntity, int id, string message, bool isMale = true, [CallerMemberName] string method = "")
         {
-            string description = isMale
-                ? $"{nameEntity} {id} no fue actualizado debido a: {message}"
-                : $"{nameEntity} {id} no fue actualizadada debido a: {message}";
-            return Error.Create(description, method);
+            string key = isMale ? "DatabaseErrors_NotUpdatedMale" : "DatabaseErrors_NotUpdatedFemale";
+            return Error.Create(ErrorMessages.Get(key, nameEntity, id, message), method);
         }
 
         /// <summary>
@@ -104,7 +96,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error AssociatedRegisters(string entity, int stationId, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No se pueden eliminar los registros de la {entity} para la estación {stationId} porque existen ventas asociadas.", method);
+            return Error.Create(ErrorMessages.Get("DatabaseErrors_AssociatedRegisters", entity, stationId), method);
         }
 
         /// <summary>
@@ -128,7 +120,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
                 refField = match.Groups["RefField"].Value;
             }
 
-            return Error.Create($"Se ha violado una restricción de clave foránea. Tabla: {entity}, Tabla referenciada: {table}, Campo referenciado: {refField}", method);
+            return Error.Create(ErrorMessages.Get("DatabaseErrors_ForeignRelationViolated", entity, table, refField), method);
         }
     }
 }

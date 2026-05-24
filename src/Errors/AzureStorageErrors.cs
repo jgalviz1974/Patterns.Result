@@ -17,7 +17,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>Una instancia de <see cref="Error"/> que representa el error de blob no encontrado.</returns>
         public static Error BlobNotFound(string containerName, string blobName, [CallerMemberName] string method = "")
         {
-            return Error.Create($"El archivo '{blobName}' no fue encontrado en el contenedor '{containerName}'.", method);
+            return Error.Create(ErrorMessages.Get("AzureStorageErrors_BlobNotFound", blobName, containerName), method);
         }
     }
 }

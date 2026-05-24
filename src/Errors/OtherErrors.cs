@@ -25,7 +25,7 @@
         public static Error CommunicationError(string[] services, [CallerMemberName] string methodName = "")
         {
             string serviceList = string.Join(", ", services);
-            return Error.Create($"Communication error with services: {serviceList}", methodName);
+            return Error.Create(ErrorMessages.Get("OtherErrors_CommunicationError", serviceList), methodName);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@
         {
             string expectedList = string.Join(", ", expected);
             string receivedList = string.Join(", ", received);
-            return Error.Create($"Expected messages: {expectedList}; Received messages: {receivedList}", methodName);
+            return Error.Create(ErrorMessages.Get("OtherErrors_MessageMismatch", expectedList, receivedList), methodName);
         }
     }
 }

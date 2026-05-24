@@ -14,7 +14,7 @@
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error CommunicationError(string nameService, string message, [CallerMemberName] string method = "")
         {
-            return Error.Create($"Error al tratar de conectar a {nameService}: {message}", method);
+            return Error.Create(ErrorMessages.Get("CommunicationErrors_CommunicationError", nameService, message), method);
         }
     }
 }

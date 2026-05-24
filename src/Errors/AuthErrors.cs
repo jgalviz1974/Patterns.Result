@@ -15,7 +15,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error UserBlocked(string userName, [CallerMemberName] string method = "")
         {
-            return Error.Create($"El usuario '{userName}' se encuentra bloqueado.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_UserBlocked", userName), method);
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidCredentials([CallerMemberName] string method = "")
         {
-            return Error.Create("Usuario no validado o contraseña incorrecta.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_InvalidCredentials"), method);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlSignatureInvalid([CallerMemberName] string method = "")
         {
-            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlGenericError"), method);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlAssertionNotSigned([CallerMemberName] string method = "")
         {
-            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlGenericError"), method);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlAudienceMismatch([CallerMemberName] string method = "")
         {
-            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlGenericError"), method);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlIssuerMismatch([CallerMemberName] string method = "")
         {
-            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlGenericError"), method);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlAssertionExpired([CallerMemberName] string method = "")
         {
-            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlGenericError"), method);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlReplayDetected([CallerMemberName] string method = "")
         {
-            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlGenericError"), method);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlConfigurationUnavailable([CallerMemberName] string method = "")
         {
-            return Error.Create("El sistema de autenticación empresarial no está disponible. Use login local o contacte soporte.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlConfigurationUnavailable"), method);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InsufficientPermissions([CallerMemberName] string method = "")
         {
-            return Error.Create("Permisos insuficientes para realizar esta operación.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_InsufficientPermissions"), method);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlConfigNotFound(int companyId, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No se encontró configuración SAML para la compañía {companyId}.", method);
+            return Error.Create(ErrorMessages.Get("AuthErrors_SamlConfigNotFound", companyId), method);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
     {
         public static Error GettingProblem(string apiRestName, [CallerMemberName] string method = "")
         {
-            return Error.Create($"No se pudo obtener el token en {apiRestName} api rest.", method);
+            return Error.Create(ErrorMessages.Get("TokenErrors_GettingProblem", apiRestName), method);
         }
     }
 }
