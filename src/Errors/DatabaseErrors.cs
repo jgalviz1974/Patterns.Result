@@ -14,8 +14,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error TableWithoutRegisters(string nameEntity, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new(stack.ErrorCode, $"La tabla {nameEntity} no contiene registros.", stack.CallerClassName, method);
+            return Error.Create($"La tabla {nameEntity} no contiene registros.", method);
         }
 
         /// <summary>
@@ -28,15 +27,10 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotFound(string nameEntity, int id, bool isMale = true, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            if (isMale)
-            {
-                return new(stack.ErrorCode, $"{nameEntity} {id} no fue encontrado.", stack.CallerClassName, method);
-            }
-            else
-            {
-                return new(stack.ErrorCode, $"{nameEntity} {id} no fue encontrada.", stack.CallerClassName, method);
-            }
+            string description = isMale
+                ? $"{nameEntity} {id} no fue encontrado."
+                : $"{nameEntity} {id} no fue encontrada.";
+            return Error.Create(description, method);
         }
 
         /// <summary>
@@ -49,15 +43,10 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotFound(string nameEntity, string nameField, bool isMale = true, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            if (isMale)
-            {
-                return new(stack.ErrorCode, $"{nameEntity}-{nameField} no fue encontrado.", stack.CallerClassName, method);
-            }
-            else
-            {
-                return new(stack.ErrorCode, $"{nameEntity}-{nameField} no fue encontrada.", stack.CallerClassName, method);
-            }
+            string description = isMale
+                ? $"{nameEntity}-{nameField} no fue encontrado."
+                : $"{nameEntity}-{nameField} no fue encontrada.";
+            return Error.Create(description, method);
         }
 
         /// <summary>
@@ -71,16 +60,10 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotFound(string nameEntity, string nameField, string value, bool isMale = true, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-
-            if (isMale)
-            {
-                return new(stack.ErrorCode, $"{nameEntity} con [{nameField}]: {value}, no fue encontrado.", stack.CallerClassName, method);
-            }
-            else
-            {
-                return new(stack.ErrorCode, $"{nameEntity} con [{nameField}]: {value}, no fue encontrada.", stack.CallerClassName, method);
-            }
+            string description = isMale
+                ? $"{nameEntity} con [{nameField}]: {value}, no fue encontrado."
+                : $"{nameEntity} con [{nameField}]: {value}, no fue encontrada.";
+            return Error.Create(description, method);
         }
 
         /// <summary>
@@ -92,9 +75,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error TableWithoutRegisters(string nameEntity, string message, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-
-            return new(stack.ErrorCode, $"No existen registros {message} en {nameEntity}.", stack.CallerClassName, method);
+            return Error.Create($"No existen registros {message} en {nameEntity}.", method);
         }
 
         /// <summary>
@@ -108,15 +89,10 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NotUpdated(string nameEntity, int id, string message, bool isMale = true, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            if (isMale)
-            {
-                return new(stack.ErrorCode, $"{nameEntity} {id} no fue actualizado debido a: {message}", stack.CallerClassName, method);
-            }
-            else
-            {
-                return new(stack.ErrorCode, $"{nameEntity} {id} no fue actualizadada debido a: {message}", stack.CallerClassName, method);
-            }
+            string description = isMale
+                ? $"{nameEntity} {id} no fue actualizado debido a: {message}"
+                : $"{nameEntity} {id} no fue actualizadada debido a: {message}";
+            return Error.Create(description, method);
         }
 
         /// <summary>
@@ -128,8 +104,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error AssociatedRegisters(string entity, int stationId, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stackInfo = StackTraceHelper.RetrieveCallerInfo();
-            return new Error(stackInfo.ErrorCode, $"No se pueden eliminar los registros de la {entity} para la estación {stationId} porque existen ventas asociadas.", stackInfo.CallerClassName, method);
+            return Error.Create($"No se pueden eliminar los registros de la {entity} para la estación {stationId} porque existen ventas asociadas.", method);
         }
 
         /// <summary>
@@ -141,7 +116,6 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error ForeingRelationViolated(string entity, string errorMessage, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             string table = string.Empty;
             string refField = string.Empty;
 
@@ -149,12 +123,12 @@ namespace Gasolutions.Core.Patterns.Result.Errors
 
             if (match.Success)
             {
-                _ = match.Groups["Field"].Value;       // VehicleId
-                table = match.Groups["Table"].Value;       // vehicles
-                refField = match.Groups["RefField"].Value; // Id
+                _ = match.Groups["Field"].Value;
+                table = match.Groups["Table"].Value;
+                refField = match.Groups["RefField"].Value;
             }
 
-            return new Error(stack.ErrorCode, $"Se ha violado una restricción de clave foránea. Tabla: {entity}, Tabla referenciada: {table}, Campo referenciado: {refField}", stack.CallerClassName, method);
+            return Error.Create($"Se ha violado una restricción de clave foránea. Tabla: {entity}, Tabla referenciada: {table}, Campo referenciado: {refField}", method);
         }
     }
 }

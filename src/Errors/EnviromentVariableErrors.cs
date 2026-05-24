@@ -8,8 +8,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
     {
         public static Gasolutions.Core.Patterns.Result.Errors.Error NoFound(string name, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new("EnviromentVariableErrors.NoFound", $"No se encontró la variable de entorno '{name}'", stack.CallerClassName, method);
+            return Error.Create($"No se encontró la variable de entorno '{name}'", method);
         }
     }
 }

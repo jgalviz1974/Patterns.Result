@@ -15,8 +15,7 @@
         /// <returns>An Error object with the corresponding code and message.</returns>
         public static Error NoValid(string type, string nameObject, string messsage, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new(stack.ErrorCode, $"{nameObject} de tipo {type} {messsage}.", stack.CallerClassName, method);
+            return Error.Create($"{nameObject} de tipo {type} {messsage}.", method);
         }
     }
 }

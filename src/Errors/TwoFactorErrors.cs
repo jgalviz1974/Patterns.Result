@@ -15,8 +15,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error EmailNotConfirmed([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("TwoFactorErrors.EmailNotConfirmed", "El correo del usuario no se encuentra confirmado.", stack.CallerClassName, method);
+            return Error.Create("El correo del usuario no se encuentra confirmado.", method);
         }
 
         /// <summary>
@@ -24,8 +23,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error UserNotFound(string userId, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("TwoFactorErrors.UserNotFound", $"No se encontró el usuario '{userId}'.", stack.CallerClassName, method);
+            return Error.Create($"No se encontró el usuario '{userId}'.", method);
         }
 
         /// <summary>
@@ -33,8 +31,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error OtpInvalid([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("TwoFactorErrors.OtpInvalid", "El OTP proporcionado no es válido.", stack.CallerClassName, method);
+            return Error.Create("El OTP proporcionado no es válido.", method);
         }
 
         /// <summary>
@@ -42,8 +39,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error OtpExpired([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("TwoFactorErrors.OtpExpired", "El OTP ha expirado.", stack.CallerClassName, method);
+            return Error.Create("El OTP ha expirado.", method);
         }
 
         /// <summary>
@@ -51,8 +47,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidCredentials([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("TwoFactorErrors.InvalidCredentials", "Usuario no validado o contraseña incorrecta.", stack.CallerClassName, method);
+            return Error.Create("Usuario no validado o contraseña incorrecta.", method);
         }
     }
 }

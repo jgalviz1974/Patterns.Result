@@ -13,8 +13,7 @@
         /// <returns>An Error object containing the error details.</returns>
         public static Error NotDefined(string message, [CallerMemberName] string methodName = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error(stack.ErrorCode, $"{message}", stack.CallerClassName, methodName);
+            return Error.Create($"{message}", methodName);
         }
 
         /// <summary>
@@ -25,9 +24,8 @@
         /// <returns>An Error object containing the error details.</returns>
         public static Error CommunicationError(string[] services, [CallerMemberName] string methodName = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             string serviceList = string.Join(", ", services);
-            return new Error(stack.ErrorCode, $"Communication error with services: {serviceList}", stack.CallerClassName, methodName);
+            return Error.Create($"Communication error with services: {serviceList}", methodName);
         }
 
         /// <summary>
@@ -39,10 +37,9 @@
         /// <returns>An Error object containing the error details.</returns>
         public static Error MessageMismatch(string[] expected, string[] received, [CallerMemberName] string methodName = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
             string expectedList = string.Join(", ", expected);
             string receivedList = string.Join(", ", received);
-            return new Error(stack.ErrorCode, $"Expected messages: {expectedList}; Received messages: {receivedList}", stack.CallerClassName, methodName);
+            return Error.Create($"Expected messages: {expectedList}; Received messages: {receivedList}", methodName);
         }
     }
 }

@@ -15,8 +15,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidResponse([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error(stack.ErrorCode, "Invalid response from email provider.", stack.CallerClassName, method);
+            return Error.Create("Invalid response from email provider.", method);
         }
 
         /// <summary>
@@ -24,8 +23,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidResponse(string message, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error(stack.ErrorCode, $"Invalid response from email provider: {message}", stack.CallerClassName, method);
+            return Error.Create($"Invalid response from email provider: {message}", method);
         }
 
         /// <summary>
@@ -33,8 +31,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error Others(string message, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error(stack.ErrorCode, message, stack.CallerClassName, method);
+            return Error.Create(message, method);
         }
     }
 }

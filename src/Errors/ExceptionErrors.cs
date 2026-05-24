@@ -18,10 +18,10 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object representing the exception.</returns>
         public static Error ExceptionNotControlledInvokingServiceMethod(string serviceName, string wcfMethod, Exception value, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            string key = $"{stack.ErrorCode}.{serviceName}.{wcfMethod}.ExceptionNotControlledInvokingServiceMethod";
-            string message = BuildDetailedExceptionMessage(stack.ErrorCode, value);
-            return new Error(key, message, stack.CallerClassName, method);
+            const string baseCode = "ExceptionErrors.ExceptionNotControlledInvokingServiceMethod";
+            string key = $"{baseCode}.{serviceName}.{wcfMethod}.ExceptionNotControlledInvokingServiceMethod";
+            string message = BuildDetailedExceptionMessage(baseCode, value);
+            return Error.Create(key, message, method);
         }
 
         /// <summary>
@@ -32,10 +32,9 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// <returns>An Error object representing the exception.</returns>
         public static Error ExceptionNotControlled(Exception value, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            string key = $"{stack.ErrorCode}";
-            string message = BuildDetailedExceptionMessage(stack.ErrorCode, value);
-            return new Error(key, message, stack.CallerClassName, method);
+            const string baseCode = "ExceptionErrors.ExceptionNotControlled";
+            string message = BuildDetailedExceptionMessage(baseCode, value);
+            return Error.Create(baseCode, message, method);
         }
 
         /// <summary>

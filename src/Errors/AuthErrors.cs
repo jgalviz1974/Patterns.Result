@@ -15,8 +15,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error UserBlocked(string userName, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.UserBlocked", $"El usuario '{userName}' se encuentra bloqueado.", stack.CallerClassName, method);
+            return Error.Create($"El usuario '{userName}' se encuentra bloqueado.", method);
         }
 
         /// <summary>
@@ -26,8 +25,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InvalidCredentials([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.InvalidCredentials", "Usuario no validado o contraseña incorrecta.", stack.CallerClassName, method);
+            return Error.Create("Usuario no validado o contraseña incorrecta.", method);
         }
 
         /// <summary>
@@ -35,8 +33,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error RequiredField(string fieldName, string message)
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.RequiredField", message, stack.CallerClassName, "RequiredField");
+            return Error.Create(message, "RequiredField");
         }
 
         /// <summary>
@@ -45,8 +42,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlSignatureInvalid([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlSignatureInvalid", "No se pudo completar la autenticación. Por favor contacte al administrador.", stack.CallerClassName, method);
+            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
         }
 
         /// <summary>
@@ -54,8 +50,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlAssertionNotSigned([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlAssertionNotSigned", "No se pudo completar la autenticación. Por favor contacte al administrador.", stack.CallerClassName, method);
+            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
         }
 
         /// <summary>
@@ -63,8 +58,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlAudienceMismatch([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlAudienceMismatch", "No se pudo completar la autenticación. Por favor contacte al administrador.", stack.CallerClassName, method);
+            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
         }
 
         /// <summary>
@@ -72,8 +66,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlIssuerMismatch([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlIssuerMismatch", "No se pudo completar la autenticación. Por favor contacte al administrador.", stack.CallerClassName, method);
+            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
         }
 
         /// <summary>
@@ -81,8 +74,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlAssertionExpired([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlAssertionExpired", "No se pudo completar la autenticación. Por favor contacte al administrador.", stack.CallerClassName, method);
+            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
         }
 
         /// <summary>
@@ -90,8 +82,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlReplayDetected([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlReplayDetected", "No se pudo completar la autenticación. Por favor contacte al administrador.", stack.CallerClassName, method);
+            return Error.Create("No se pudo completar la autenticación. Por favor contacte al administrador.", method);
         }
 
         /// <summary>
@@ -99,8 +90,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlConfigurationUnavailable([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlConfigurationUnavailable", "El sistema de autenticación empresarial no está disponible. Use login local o contacte soporte.", stack.CallerClassName, method);
+            return Error.Create("El sistema de autenticación empresarial no está disponible. Use login local o contacte soporte.", method);
         }
 
         /// <summary>
@@ -108,8 +98,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error InsufficientPermissions([CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.InsufficientPermissions", "Permisos insuficientes para realizar esta operación.", stack.CallerClassName, method);
+            return Error.Create("Permisos insuficientes para realizar esta operación.", method);
         }
 
         /// <summary>
@@ -117,8 +106,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
         /// </summary>
         public static Error SamlConfigNotFound(int companyId, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Error("AuthErrors.SamlConfigNotFound", $"No se encontró configuración SAML para la compañía {companyId}.", stack.CallerClassName, method);
+            return Error.Create($"No se encontró configuración SAML para la compañía {companyId}.", method);
         }
     }
 }

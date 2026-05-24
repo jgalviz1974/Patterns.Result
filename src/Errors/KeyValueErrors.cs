@@ -8,8 +8,7 @@ namespace Gasolutions.Core.Patterns.Result.Errors
     {
         public static Gasolutions.Core.Patterns.Result.Errors.Error NoValid(string value, [CallerMemberName] string method = "")
         {
-            StackTraceInfo stack = StackTraceHelper.RetrieveCallerInfo();
-            return new Gasolutions.Core.Patterns.Result.Errors.Error(stack.ErrorCode, $"La clave proporcionada no es válida: '{value}'", stack.CallerClassName, method);
+            return Error.Create($"La clave proporcionada no es válida: '{value}'", method);
         }
     }
 }
