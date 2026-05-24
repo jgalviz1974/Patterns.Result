@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2.0.1.0]
+### Added
+- `Error.AppendToDescription(string text)` — returns a new immutable `Error` instance with the given text appended to the existing description (uses `record` `with` expression)
+- `Error.AddToDescription(string text)` — returns a new immutable `Error` instance with the given text inserted to the existing description (uses `record` `with` expression)
+
 ## [2.0.0.0]
 ### Added
 - `ErrorLanguage` static class to configure the active culture for error messages (defaults to Spanish `es`)

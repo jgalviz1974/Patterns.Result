@@ -10,6 +10,12 @@
             return new Error(stackTraceInfo.ErrorCode, description, stackTraceInfo.CallerClassName, method);
         }
 
+        public Error AddToDescription(string message) =>
+           this with { Description = $"{this.Description} {message}" };
+
+        public Error AppendToDescription(string message) =>
+          this with { Description = $"{message} {this.Description}" };
+
         internal static Error Create(string code, string description, string method)
         {
             StackTraceInfo stackTraceInfo = StackTraceHelper.RetrieveCallerInfo(1);

@@ -13,6 +13,8 @@
             this.Value = value;
             this.IsSuccess = isSuccess;
             this.Error = error;
+            this.ClassName = string.Empty;
+            this.MethodName = string.Empty;
         }
 
         public string ClassName { get; private set; }
